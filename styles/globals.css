@@ -25,11 +25,11 @@ button {
 }
 
 form {
-  @apply bg-rose-500/60 shadow-xl w-fit px-7 py-8 flex flex-col items-start rounded-lg shadow-xl space-y-7 md:w-[400px];
+  @apply bg-yellow-500/90 shadow-xl w-fit px-7 py-8 flex flex-col items-start rounded-lg shadow-xl space-y-7 md:w-[400px];
 }
 
 textarea {
-  @apply min-h-[200px];
+  @apply min-h-[100px];
 }
 
 label {
