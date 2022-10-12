@@ -1,7 +1,6 @@
-import classNames from "classnames";
-import Error from "../../components/Error";
-import { useState } from "react";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import Error from "../../components/Error";
 import { supabase } from "../../utils/supabaseClient";
 
 export default function Create() {
@@ -22,18 +21,18 @@ export default function Create() {
     }
 
     // upload image
-    const imgSrc = (+new Date).toString(36);
-  
-    const { data:imgData, error:imgError } = await supabase.storage
-      .from("images")
-      .upload(`${imgSrc}.png`, selectedFile);
+    const fileExt = selectedFile.name.split(".").pop();
+    const fileName = `${Math.random()}.${fileExt}`;
+    const filePath = `${fileName}`;
 
-    console.log({imgData, imgSrc, imgError});
+    const { data: imgData, error: imgError } = await supabase.storage
+      .from("images")
+      .upload(filePath, selectedFile);
 
     // if so, create row
     const { data, error } = await supabase
       .from("posts")
-      .insert([{ title, caption, imgSrc }])
+      .insert([{ title, caption, imgSrc: filePath }])
       .select();
 
     // row failed

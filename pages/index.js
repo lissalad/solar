@@ -1,14 +1,11 @@
-import Head from "next/head";
-import Image from "next/image";
+import { useEffect, useState } from "react";
+import Error from "../components/Error";
 import PostCard from "../components/PostCard";
 import { supabase } from "../utils/supabaseClient";
-import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
-import Error from "../components/Error";
 
 export default function Home() {
   const [fetchError, setFetchError] = useState(null);
-  const [Posts, setPosts] = useState(null);
+  const [posts, setPosts] = useState(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -34,9 +31,9 @@ export default function Home() {
   return (
     <main>
       {fetchError && <Error error={fetchError} />}
-      {Posts && (
+      {posts && (
         <div className="flex flex-col space-y-5">
-          {Posts.map((post) => (
+          {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
         </div>
