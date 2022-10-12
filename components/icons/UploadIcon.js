@@ -2,8 +2,6 @@ import Link from "next/link";
 
 export default function UploadIcon() {
   return (
-    <Link href="/posts/new">
-
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -13,7 +11,6 @@ export default function UploadIcon() {
       className="background-sky-400"
       width="25"
       height="25"
-
     >
       <path
         strokeLinecap="round"
@@ -21,6 +18,5 @@ export default function UploadIcon() {
         d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
       />
     </svg>
-    </Link>
   );
 }

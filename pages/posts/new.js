@@ -28,6 +28,8 @@ export default function Create() {
       .from("images")
       .upload(`${imgSrc}.png`, selectedFile);
 
+    console.log({imgData, imgSrc, imgError});
+
     // if so, create row
     const { data, error } = await supabase
       .from("posts")
@@ -61,7 +63,7 @@ export default function Create() {
       <form onSubmit={handleSubmit}>
         {/* image upload */}
         <div className="w-full">
-          <label for="avatar">Upload Image:</label>
+          <label htmlFor="image">Upload Image:</label>
           <input
             type="file"
             id="image"
