@@ -8,9 +8,8 @@ export default function ProfileIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="hover:bg-blue-200"
-      width="30"
-      height="30"
+      width="25"
+      height="25"
     >
       <path
         strokeLinecap="round"

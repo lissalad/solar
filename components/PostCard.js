@@ -12,12 +12,12 @@ export default function PostCard({ post }) {
     <a
       href={"/posts/" + post.id}
       className={classNames(
-        "w-32 h-fit group transition-all m-1",
-        "md:w-64 md:max-w-[700px] max-h-[500px]",
+        "w-40 h-fit grow transition-all m-1",
+        "md:w-64 md:max-w-[700px] max-h-[500px] md:group",
         "hover:brightness-75"
       )}
     >
-      <div className="rounded-sm bg-gray-200">
+      <div className="">
         <img
           src={`${STORAGE_URL}${post.imgSrc}`}
           // layout="fill"
@@ -26,20 +26,5 @@ export default function PostCard({ post }) {
         ></img>
       </div>
     </a>
-
-    // <Link href={"/posts/" + post.id}>
-    //   <div className="shadow-xl text-white h-fit relative transition-all group z-0">
-    //     <img
-    //       className="group-hover:brightness-75 transition-all"
-    //       src={`${STORAGE_URL}${post.imgSrc}`}
-    //     />
-
-    //     {/* HELP NOT SYNCHED */}
-    //     <div className="absolute w-full bottom-0 py-5 px-5 bg-black/90 invisible transition-all group-hover:visible z-10">
-    //       <p className="text-2xl">{post.title}</p>
-    //       <p className="text-md">{post.content}</p>
-    //     </div>
-    //   </div>
-    // </Link>
   );
 }

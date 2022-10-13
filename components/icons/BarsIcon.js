@@ -6,7 +6,6 @@ export default function BarsIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6"
       width="30"
       height="30"
     >

@@ -41,7 +41,7 @@ const Post = () => {
     if (id) {
       // console.log(post.createdAt);
 
-      formatDate(post.createdAt);
+      // formatDate(data.createdAt);
       fetchPost();
     }
   }, [id, router]);
@@ -57,26 +57,36 @@ const Post = () => {
       {post ? (
         <div
           className={classNames(
-            "flex flex-col bg-zinc-900/50",
+            "flex flex-col bg-zinc-900/50 items-center",
             "md:flex-row md:items-end md:p-4 md:rounded-sm"
           )}
         >
+          {/* image */}
           <img
-            className={classNames("", "md:max-w-[400px]")}
+            className={classNames("max-h-[60vh] w-fit", "md:max-w-[400px]")}
             src={`${STORAGE_URL}${post.imgSrc}`}
           />
+
+          {/* text */}
           <div
             className={classNames(
-              "flex flex-col text-left w-full space-y-5 px-7 py-2",
-              "md:w-[500px]"
+              "flex flex-col w-full",
+              "md:w-[500px] md:space-y-5 md:px-7"
             )}
           >
-            <h1 className="text-3xl">{post.title}</h1>
-            <div className={classNames("secondary space-y-2")}>
-              <p className="indent-5">{post.caption}</p>
-              <p>posted at {date}</p>
-              <p>{post.when}</p>
-              <p>{post.where}</p>
+            {/* post title */}
+            <h1 className="text-2xl my-1.5 text-center">{post.title}</h1>
+
+            {/* details */}
+            <div className={classNames("secondary my-2 mx-7", "md:space-y-2")}>
+              <p className="text-left">{post.caption}</p>
+
+              {/* more */}
+              <div className={classNames("my-3")}>
+                <p>posted at {post.createdAt}</p>
+                <p>{post.when}</p>
+                <p>{post.where}</p>
+              </div>
             </div>
           </div>
         </div>

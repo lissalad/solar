@@ -1,8 +1,15 @@
 import classNames from "classnames";
+import ErrorIcon from "./icons/ErrorIcon";
 
 export default function Error({ error }) {
   return (
-    <div className={classNames("w-fit px-12 pb-2 pt-3 bg-rose-500/80 text-center absolute right-0 bottom-0 text-white rounded-tl-lg text-lg")}>
+    <div
+      className={classNames(
+        "px-5 py-2 bg-red-500/50 text-center bottom-0 rounded-t-sm absolute text-lg text-rose-100 flex flex-row items-center space-x-3",
+        "md:w-fit md:right-5 md:bottom-5 md:rounded-sm"
+      )}
+    >
+      <ErrorIcon />
       <p>{error}</p>
     </div>
   );

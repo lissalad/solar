@@ -5,7 +5,7 @@
 html {
   font-family: 'Roboto', sans-serif;
   @apply text-white;
-  @apply bg-zinc-900/90
+  @apply bg-stone-900
 }
 
 .content {
@@ -13,20 +13,25 @@ html {
 }
 
 main {
-  @apply mx-auto px-4 sm:px-6 md:px-[90px] py-9 flex flex-col items-center md:pt-14 z-0;
-  @apply pt-[56px];
+  @apply flex flex-col z-0;
+
+  /* sm */
+  @apply py-9 pt-[56px];
+
+  /* md */
+  @apply md:px-[90px] md:pt-14;
 }
 
 input, textarea {
-  @apply border-2 border-zinc-100 bg-white/90 px-1.5 py-0.5 rounded w-full text-zinc-800 w-full mt-1;
+  @apply border-2 border-zinc-100 bg-white/90 px-1.5 py-0.5 rounded w-full text-zinc-800 w-full mt-1 shadow-xl;
 }
 
 button {
-  @apply bg-pink-600/60 text-white px-3 py-1 rounded shadow-xl hover:bg-pink-600 ml-auto;
+  @apply bg-yellow-600/80 text-white px-3 py-1 w-full rounded-sm shadow-xl hover:bg-yellow-600 ml-auto;
 }
 
 form {
-  @apply bg-yellow-500/90 shadow-xl w-fit px-7 py-8 flex flex-col items-start rounded-lg shadow-xl space-y-7 md:w-[400px];
+  @apply text-black bg-orange-50/90 shadow-xl w-fit px-7 py-8 flex flex-col items-start rounded shadow-xl space-y-4 md:w-[400px];
 }
 
 textarea {
@@ -34,7 +39,7 @@ textarea {
 }
 
 .secondary {
-  @apply text-zinc-300;
+  @apply text-zinc-400 text-[14px];
 }
 
 
