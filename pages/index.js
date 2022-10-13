@@ -32,7 +32,7 @@ export default function Home() {
     <main>
       {fetchError && <Error error={fetchError} />}
       {posts && (
-        <div className="flex flex-col space-y-5">
+        <div className="@apply flex flex-row flex-wrap mx-auto w-fit">
           {posts.map((post) => (
             <PostCard key={post.id} post={post} />
           ))}
