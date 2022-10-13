@@ -9,11 +9,12 @@ html {
 }
 
 .content {
-  @apply md:px-[90px];
+  @apply md:px-[90px] px-[10px];
 }
 
 main {
   @apply mx-auto px-4 sm:px-6 md:px-[90px] py-9 flex flex-col items-center md:pt-14 z-0;
+  @apply pt-[56px];
 }
 
 input, textarea {
@@ -32,15 +33,10 @@ textarea {
   @apply min-h-[100px];
 }
 
-.gallery {
-
+.secondary {
+  @apply text-zinc-300;
 }
 
-.gallery-inside {
-  /* @apply grid grid-cols-1 gap-y-10 gap-x-6; */
-  /* @apply sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8; */
-
-}
 
 label {
 

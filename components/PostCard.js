@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import classNames from "classnames";
 
 export default function PostCard({ post }) {
   const STORAGE_URL =
@@ -10,7 +11,11 @@ export default function PostCard({ post }) {
   return (
     <a
       href={"/posts/" + post.id}
-      className="group w-[250px] h-fit  group hover:brightness-75 transition-all m-1"
+      className={classNames(
+        "w-32 h-fit group transition-all m-1",
+        "md:w-64 md:max-w-[700px] max-h-[500px]",
+        "hover:brightness-75"
+      )}
     >
       <div className="rounded-sm bg-gray-200">
         <img
