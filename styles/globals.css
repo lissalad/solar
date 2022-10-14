@@ -23,7 +23,7 @@ main {
 }
 
 input, textarea {
-  @apply border-2 border-zinc-100 bg-white/90 px-1.5 py-0.5 rounded text-zinc-800 w-full mt-1 shadow-xl ;
+  @apply bg-white/20 mx-2 px-1.5 py-0.5 rounded-sm text-zinc-200 w-full mt-1 shadow-xl;
 }
 
 button {
@@ -32,7 +32,7 @@ button {
 }
 
 form {
-  @apply w-full flex flex-col rounded shadow-xl space-y-4 md:w-[400px];
+  @apply w-full flex flex-col rounded shadow-xl space-y-4 mt-4 md:w-[400px];
 }
 
 textarea {
@@ -45,5 +45,9 @@ textarea {
 
 
 label {
+@apply text-neutral-400 mx-2;
+}
+
+#file-upload-button {
 
 }

@@ -6,6 +6,9 @@ import { supabase } from "../../utils/supabaseClient";
 export default function New() {
   const [selectedFile, setSelectedFile] = useState();
   const [title, setTitle] = useState("");
+  const [when, setWhen] = useState("");
+  const [where, setWhere] = useState("");
+
   const [caption, setCaption] = useState("");
   const [formError, setFormError] = useState("");
 
@@ -32,7 +35,7 @@ export default function New() {
     // if so, create row
     const { data, error } = await supabase
       .from("posts")
-      .insert([{ title, caption, imgSrc: filePath }])
+      .insert([{ title, caption, imgSrc: filePath, when, where }])
       .select();
 
     // row failed
@@ -61,7 +64,7 @@ export default function New() {
     <main>
       <form onSubmit={handleSubmit}>
         {/* image upload */}
-        <div className="w-full">
+        <div className="w-fit">
           <label htmlFor="image">Upload Image:</label>
           <input
             type="file"
@@ -73,7 +76,7 @@ export default function New() {
         </div>
 
         {/* title */}
-        <div className="w-full">
+        <div className="field">
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -83,8 +86,30 @@ export default function New() {
           />
         </div>
 
+        {/* when */}
+        <div className="field">
+          <label htmlFor="when">When</label>
+          <input
+            type="date"
+            id="when"
+            value={when}
+            onChange={(e) => setWhen(e.target.value)}
+          />
+        </div>
+
+        {/* where */}
+        <div className="field">
+          <label htmlFor="where">Where</label>
+          <input
+            type="text"
+            id="where"
+            value={where}
+            onChange={(e) => setWhere(e.target.value)}
+          />
+        </div>
+
         {/* caption */}
-        <div className="w-full">
+        <div className=".field">
           <label htmlFor="caption">Caption</label>
           <textarea
             type="text"

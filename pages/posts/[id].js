@@ -7,8 +7,10 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import PenIcon from "../../components/icons/PenIcon";
+import MapPinIcon from "../../components/icons/MapPinIcon";
 
 import fetchPost from "../../utils/posts/fetchPost";
+import CalendarIcon from "../../components/icons/CalendarIcon";
 
 const Post = () => {
   const STORAGE_URL =
@@ -44,16 +46,16 @@ const Post = () => {
   }
 
   return (
-    <main>
+    <main className={classNames("")}>
       <div
         className={classNames(
-          "flex flex-col bg-zinc-900/50 items-center",
+          "flex flex-col bg-zinc-900/50 items-center my-auto",
           "md:flex-row md:items-end md:p-4 md:rounded-sm"
         )}
       >
         {/* image */}
         <img
-          className={classNames("max-h-[60vh] w-fit", "md:max-w-[400px]")}
+          className={classNames("max-h-[50vh] w-fit", "md:max-h-[600px]")}
           src={`${STORAGE_URL}${post.imgSrc}`}
         />
 
@@ -61,29 +63,55 @@ const Post = () => {
         <div
           className={classNames(
             "flex flex-col w-full",
-            "md:w-[500px] md:space-y-5 md:px-7"
+            "md:w-[500px] md:space-y-3 md:mx-2"
           )}
         >
           {/* post title */}
-          <h1 className="text-2xl my-1.5 text-center">{post.title}</h1>
+          <h1 className="text-2xl text-center my-2 md:text-left md:my-0 md:ml-7">
+            {post.title}
+          </h1>
 
           {/* details */}
-          <div className={classNames("secondary my-2 mx-7", "md:space-y-2")}>
-            <p className="text-left">{post.caption}</p>
+          <div className={classNames("secondary my-2 mx-7", "space-y-6")}>
+            {/* caption */}
+            <div className={classNames("flex flex-row space-x-2")}>
+              <p>Lissa:</p>
+              <p className="text-left">{post.caption}</p>
+            </div>
 
             {/* more */}
-            <div className={classNames("my-3")}>
-              <p>
-                posted on{" "}
+            <div
+              className={classNames(
+                "flex flex-col space-y-4",
+                "md:flex-row md:space-y-0 md:space-x-4"
+              )}
+            >
+              {/* <p>
+                Posted on{" "}
                 {new Date(post.createdAt).toLocaleString("en", {
                   month: "long",
                   day: "numeric",
                   year: "numeric",
                 })}
-              </p>
+              </p> */}
 
-              <p>{post.when}</p>
-              <p>{post.where}</p>
+              {/* date */}
+              <div className="flex flex-row space-x-2 items-center">
+                <CalendarIcon />
+                <p>
+                  {new Date(post.when).toLocaleString("en", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </p>
+              </div>
+
+              {/* location */}
+              <div className="flex flex-row space-x-1 items-center">
+                <MapPinIcon />
+                <p>{post.where}</p>
+              </div>
             </div>
           </div>
         </div>
