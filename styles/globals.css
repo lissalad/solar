@@ -23,15 +23,16 @@ main {
 }
 
 input, textarea {
-  @apply border-2 border-zinc-100 bg-white/90 px-1.5 py-0.5 rounded w-full text-zinc-800 w-full mt-1 shadow-xl;
+  @apply border-2 border-zinc-100 bg-white/90 px-1.5 py-0.5 rounded text-zinc-800 w-full mt-1 shadow-xl ;
 }
 
 button {
-  @apply bg-yellow-600/80 text-white px-3 py-1 w-full rounded-sm shadow-xl hover:bg-yellow-600 ml-auto;
+  @apply bg-yellow-600/80 backdrop-blur text-white text-xl py-4 w-full fixed bottom-0  hover:bg-yellow-600;
+  @apply md:py-1 md:px-3 md:rounded-sm md:shadow-xl
 }
 
 form {
-  @apply text-black bg-orange-50/90 shadow-xl w-fit px-7 py-8 flex flex-col items-start rounded shadow-xl space-y-4 md:w-[400px];
+  @apply w-full flex flex-col rounded shadow-xl space-y-4 md:w-[400px];
 }
 
 textarea {

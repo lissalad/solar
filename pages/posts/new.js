@@ -3,7 +3,7 @@ import { useState } from "react";
 import Error from "../../components/Error";
 import { supabase } from "../../utils/supabaseClient";
 
-export default function Create() {
+export default function New() {
   const [selectedFile, setSelectedFile] = useState();
   const [title, setTitle] = useState("");
   const [caption, setCaption] = useState("");
@@ -15,7 +15,7 @@ export default function Create() {
     e.preventDefault();
 
     // check if all fields completed
-    if (!title || !caption || !selectedFile) {
+    if (!title || !selectedFile) {
       setFormError("Please complete the form.");
       return;
     }

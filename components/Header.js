@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <>
-      <div className="w-full flex flex-row justify-between py-2 bg-rose-800/80 backdrop-blur fixed items-center content z-20">
+      <div className="w-full flex flex-row justify-between py-2 bg-zinc-700/80 backdrop-blur fixed items-center content z-20">
         <div className="flex flex-row items-center space-x-2">
           <img src="/sun.png" width="40" height="40" />
           <Link href="/">

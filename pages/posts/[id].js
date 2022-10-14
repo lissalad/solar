@@ -4,6 +4,7 @@ import Image from "next/image";
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
+import PenIcon from "../../components/icons/PenIcon";
 
 const Post = () => {
   const STORAGE_URL =
@@ -89,6 +90,14 @@ const Post = () => {
               </div>
             </div>
           </div>
+
+          {/* edit button */}
+          <a
+            href={"/posts/edit/" + post.id}
+            className="fixed bottom-3 right-3 p-3 bg-black/30 rounded-lg"
+          >
+            <PenIcon />
+          </a>
         </div>
       ) : (
         // loading
