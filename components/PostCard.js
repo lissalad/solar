@@ -9,16 +9,16 @@ export default function PostCard({ post }) {
 
   const [isLoading, setLoading] = useState(true);
   return (
-    <a
-      href={"/posts/" + post.id}
-      className={classNames(
-        "w-40 h-fit grow transition-all m-1",
-        "md:w-64 md:max-w-[700px] max-h-[500px] md:group",
-        "hover:brightness-75"
-      )}
-    >
-      <div className="">
+    <a href={"/posts/" + post.id}>
+      <div
+        className={classNames(
+          " transition-all m-1",
+          "md:group",
+          "hover:brightness-75"
+        )}
+      >
         <img
+          className="w-60 h-80 object-cover"
           src={`${STORAGE_URL}${post.imgSrc}`}
           // layout="fill"
           // objectFit="cover"

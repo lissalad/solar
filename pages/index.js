@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Error from "../components/Error";
 import PostCard from "../components/PostCard";
 import { supabase } from "../utils/supabaseClient";
+import { useAuth } from "../utils/auth";
 
 export default function Home() {
+  const { user, signOut } = useAuth();
   const [fetchError, setFetchError] = useState(null);
   const [posts, setPosts] = useState(null);
 
@@ -27,6 +29,10 @@ export default function Home() {
 
     fetchPosts();
   }, []);
+
+  if (!user) {
+    return <p className="p-12 text-white">welcome</p>;
+  }
 
   return (
     <main>

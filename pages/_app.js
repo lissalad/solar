@@ -1,12 +1,14 @@
 import Header from "../components/Header";
+import { AuthProvider } from "../utils/auth";
+import { supabase } from "../utils/supabaseClient";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div>
+    <AuthProvider supabase={supabase}>
       <Header />
       <Component {...pageProps} />
-    </div>
+    </AuthProvider>
   );
 }
 

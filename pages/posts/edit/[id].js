@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import classNames from "classnames";
 import { supabase } from "../../../utils/supabaseClient";
 import PostCard from "../../../components/PostCard";
+import fetchPost from "../../../utils/posts/fetchPost";
 
 const Edit = () => {
   const STORAGE_URL =
@@ -16,6 +17,7 @@ const Edit = () => {
   const [title, setTitle] = useState("");
   const [caption, setCaption] = useState("");
   const [formError, setFormError] = useState("");
+  const [loading, setLoading] = useState(true);
 
   // update changes
   const handleSubmit = async (e) => {
@@ -46,38 +48,23 @@ const Edit = () => {
 
   // get post
   useEffect(() => {
-    // get post by id
-    const fetchPost = async () => {
-      const { data, error } = await supabase
-        .from("posts")
-        .select()
-        .eq("id", id)
-        .single();
-      // console.log("hello", { data, error });
-
-      // if bad
-      if (error) {
-        // console.log("bad");
-        router.push("/", { replace: true }); // NOT WORKING
-      }
-
-      // if good
-      if (data) {
-        // console.log("good");
-        setPost(data);
-        setTitle(data.title);
-        setCaption(data.caption);
-      }
-    };
-
     if (id) {
-      // console.log(post.createdAt);
-
-      // formatDate(data.createdAt);
-      fetchPost();
+      fetchPost(id).then(({ post, error }) => {
+        if (error) {
+          router.push("/");
+        } else {
+          setPost(post);
+          setTitle(post.title);
+          setCaption(post.caption);
+          setLoading(false);
+        }
+      });
     }
   }, [id, router]);
 
+  if (loading) {
+    return <p>Loading</p>;
+  }
   return (
     <main>
       {post ? (
