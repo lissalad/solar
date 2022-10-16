@@ -25,12 +25,12 @@ export default function Header() {
         {/* desktop nav */}
         <div className="md:flex flex-row space-x-5 items-center hidden">
           <Link passHref href="/posts/new">
-            <a>
+            <a className="icon">
               <UploadIcon />
             </a>
           </Link>
           <Link passHref href="/profile">
-            <a>
+            <a className="icon">
               <ProfileIcon />
             </a>
           </Link>

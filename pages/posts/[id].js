@@ -12,6 +12,7 @@ import MapPinIcon from "../../components/icons/MapPinIcon";
 
 import fetchPost from "../../utils/posts/fetchPost";
 import CalendarIcon from "../../components/icons/CalendarIcon";
+import EllipsisIcon from "../../components/icons/EllipsisIcon";
 
 const Post = () => {
   const STORAGE_URL =
@@ -60,104 +61,95 @@ const Post = () => {
   //   setPost(tempPost);
   // });
 
+  function getDate() {
+    if (date) {
+      return (
+        <div className="flex flex-row space-x-2 items-center">
+          <CalendarIcon />
+          <p>
+            {new Date(post.when).toLocaleString("en", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </p>
+        </div>
+      );
+    }
+  }
+
+  function getLocation() {
+    <div className="flex flex-row space-x-1 items-center">
+      <MapPinIcon />
+      <p>{post.where}</p>
+    </div>;
+  }
+
   if (loading) {
     return <p>Loading</p>;
   }
 
   return (
-    <main className={classNames("")}>
-      <div
-        className={classNames(
-          "flex flex-col bg-zinc-900/50 items-center my-auto",
-          "md:flex-row md:items-end md:p-4 md:rounded-sm"
-        )}
-      >
-        {/* image */}
-        <img
-          className={classNames("max-h-[50vh] w-fit", "md:max-h-[600px]")}
-          src={`${STORAGE_URL}${post.imgSrc}`}
-        />
-
-        {/* text */}
+    <main>
+      {post ? (
         <div
           className={classNames(
-            "flex flex-col w-full",
-            "md:w-[500px] md:space-y-3 md:mx-2"
+            "w-full flex bg-black/40 mx-4 flex-col rounded-lg relative justify",
+            "md:w-[750px] md:mt-10"
           )}
         >
-          {/* post title */}
-          <h1 className="text-2xl text-center my-2 md:text-left md:my-0 md:ml-7">
-            {post.title}
-          </h1>
-
-          {/* details */}
-          <div className={classNames("secondary my-2 mx-7", "space-y-6")}>
-            {/* caption */}
-            <div className={classNames("flex flex-row space-x-2")}>
-              <p
-                className={classNames(
-                  "bg-rose-800/60 px-2 py-.5 rounded-lg text-rose-200"
-                )}
-              >
-                user
-              </p>
-              <p className="text-left">{post.caption}</p>
-            </div>
-
-            {/* more */}
-            <div
+          <div className="md:flex md:flex-row mr-auto">
+            {/* image */}
+            <img
               className={classNames(
-                "flex flex-col space-y-4",
-                "md:flex-row md:space-y-0 md:space-x-4"
+                "max-h-[30vh] mx-auto w-fit",
+                "md:max-h-[550px] rounded-l-lg"
               )}
-            >
-              {/* <p>
-                Posted on{" "}
-                {new Date(post.createdAt).toLocaleString("en", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </p> */}
-
-              {/* date */}
-              <div className="flex flex-row space-x-2 items-center">
-                <CalendarIcon />
-                <p>
-                  {new Date(post.when).toLocaleString("en", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
+              src={`${STORAGE_URL}${post.imgSrc}`}
+            />
+            {/* details */}
+            <div className=" flex flex-col mx-5 my-4 space-y-6 h-full">
+              {/* title */}
+              <h1 className={classNames("text-4xl")}>{post.title}</h1>
+              {/* caption */}
+              <div className={classNames("flex flex-col space-y-2")}>
+                <p
+                  className={classNames(
+                    "bg-rose-800/50 px-2 py-.5 rounded-lg text-rose-200 h-fit w-fit font-bold"
+                  )}
+                >
+                  user
+                </p>
+                <p className="text-left w-full text-neutral-400">
+                  {post.caption}
                 </p>
               </div>
-
-              {/* location */}
-              <div className="flex flex-row space-x-1 items-center">
-                <MapPinIcon />
-                <p>{post.where}</p>
+            </div>
+            {/* buttons */}
+            <div className="absolute right-3 bottom-3">
+              {/* <div className="p-3 w-fit bg-black/30 rounded-lg">
+                  <EllipsisIcon />
+                </div> */}
+              <div className={classNames("md:flex md:flex-row md:space-x-3")}>
+                <a
+                  href={"/posts/edit/" + post.id}
+                  className="w-fit p-3 bg-black/30 rounded-lg icon"
+                >
+                  <PenIcon />
+                </a>
+                <button
+                  onClick={handleDelete}
+                  className="w-fit p-3 bg-black/30 rounded-lg icon"
+                >
+                  <TrashIcon />
+                </button>
               </div>
             </div>
           </div>
         </div>
-
-        {/* buttons */}
-        <div
-          className={classNames(
-            "fixed flex flex-row space-x-3 bottom-3 right-3"
-          )}
-        >
-          <a
-            href={"/posts/edit/" + post.id}
-            className="p-3 bg-black/30 rounded-lg"
-          >
-            <PenIcon />
-          </a>
-          <button onClick={handleDelete} className="p-3 bg-black/30 rounded-lg">
-            <TrashIcon />
-          </button>
-        </div>
-      </div>
+      ) : (
+        <></>
+      )}
     </main>
   );
 };

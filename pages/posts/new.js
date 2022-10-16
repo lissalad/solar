@@ -74,7 +74,7 @@ export default function New() {
         </h1>
         <form onSubmit={handleSubmit}>
           {/* image upload */}
-          <div className="w-fit">
+          <div className="">
             <label htmlFor="image">Upload Image:</label>
             <input
               type="file"

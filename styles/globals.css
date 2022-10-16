@@ -51,6 +51,10 @@ label {
 @apply text-neutral-400;
 }
 
+.icon {
+  @apply hover:brightness-50;
+}
+
 #file-upload-button {
 
 }
