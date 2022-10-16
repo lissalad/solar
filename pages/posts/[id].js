@@ -95,7 +95,7 @@ const Post = () => {
         <div
           className={classNames(
             "w-full flex bg-black/40 mx-4 flex-col rounded-lg relative justify",
-            "md:w-[750px] md:mt-10"
+            "md:max-w-[800px] md:mt-10"
           )}
         >
           <div className="md:flex md:flex-row mr-auto">
@@ -103,7 +103,7 @@ const Post = () => {
             <img
               className={classNames(
                 "max-h-[30vh] mx-auto w-fit",
-                "md:max-h-[550px] rounded-l-lg"
+                "md:max-h-[550px] md:max-w-[500px] rounded-l-lg"
               )}
               src={`${STORAGE_URL}${post.imgSrc}`}
             />

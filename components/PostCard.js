@@ -9,7 +9,7 @@ export default function PostCard({ post, onDelete }) {
 
   const [isLoading, setLoading] = useState(true);
   return (
-    <a href={"/posts/" + post.id}>
+    <a href={"/posts/" + post.id} className="">
       <div
         className={classNames(
           "transition-all m-1",
@@ -18,7 +18,7 @@ export default function PostCard({ post, onDelete }) {
         )}
       >
         <img
-          className="w-60 h-80 object-cover"
+          className="w-80 h-80 object-cover"
           src={`${STORAGE_URL}${post.imgSrc}`}
           // layout="fill"
           // objectFit="cover"

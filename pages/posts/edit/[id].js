@@ -74,7 +74,7 @@ const Edit = () => {
         <div
           className={classNames(
             "w-full flex bg-black/40 mx-4 flex-col rounded-b-lg",
-            "md:w-[750px] md:mt-10"
+            "md:min-w-[750px] md:w-fit md:mt-10"
           )}
         >
           <h1 className="bg-yellow-400/80 py-2 rounded-t-lg text-center text-neutral-700 font-bold">
