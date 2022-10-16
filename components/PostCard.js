@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import classNames from "classnames";
 
-export default function PostCard({ post }) {
+export default function PostCard({ post, onDelete }) {
   const STORAGE_URL =
     "https://qmcbxcwpoatpgxurtrgf.supabase.co/storage/v1/object/public/images/";
 
@@ -12,7 +12,7 @@ export default function PostCard({ post }) {
     <a href={"/posts/" + post.id}>
       <div
         className={classNames(
-          " transition-all m-1",
+          "transition-all m-1",
           "md:group",
           "hover:brightness-75"
         )}

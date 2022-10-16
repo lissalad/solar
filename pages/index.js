@@ -30,6 +30,12 @@ export default function Home() {
     fetchPosts();
   }, []);
 
+  const handleDelete = (id) => {
+    setPosts((prevPosts) => {
+      return prevPosts.filter((p) => p.id !== id);
+    });
+  };
+
   // if (!user) {
   //   return <p className="p-12 text-white">welcome</p>;
   // }
@@ -40,7 +46,7 @@ export default function Home() {
       {posts && (
         <div className="flex flex-row justify-center flex-wrap">
           {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <PostCard key={post.id} post={post} onDelete={handleDelete} />
           ))}
         </div>
       )}

@@ -13,7 +13,7 @@ html {
 }
 
 main {
-  @apply flex flex-col z-0;
+  @apply flex flex-col z-0 w-full justify-center items-center;
 
   /* sm */
   @apply py-9 pt-[56px];
@@ -23,16 +23,15 @@ main {
 }
 
 input, textarea {
-  @apply bg-white/20 mx-2 px-1.5 py-0.5 rounded-sm text-zinc-200 w-full mt-1 shadow-xl;
+  @apply bg-white/20 px-1.5 py-0.5 rounded-sm text-zinc-200 w-full mt-1 shadow-xl;
 }
 
 button {
-  @apply bg-yellow-600/80 backdrop-blur text-white text-xl py-4 w-full fixed bottom-0  hover:bg-yellow-600/90;
-  @apply md:py-1 md:px-3 md:rounded-sm md:shadow-xl
+ 
 }
 
 form {
-  @apply w-full flex flex-col rounded shadow-xl space-y-4 mt-4 md:w-[400px];
+  @apply px-4 space-y-4 py-4;
 }
 
 textarea {
@@ -43,9 +42,13 @@ textarea {
   @apply text-zinc-400 text-[14px];
 }
 
+.save, .post, .cancel {
+  @apply bg-yellow-600/80 backdrop-blur text-white text-xl py-4 w-full hover:bg-yellow-600/60;
+  @apply md:py-1 md:rounded-lg md:shadow-xl md:px-7 md:text-sm md:mt-3 w-fit;
+}
 
 label {
-@apply text-neutral-400 mx-2;
+@apply text-neutral-400;
 }
 
 #file-upload-button {

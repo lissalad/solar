@@ -16,6 +16,8 @@ const Edit = () => {
 
   const [title, setTitle] = useState("");
   const [caption, setCaption] = useState("");
+  const [when, setWhen] = useState("");
+  const [where, setWhere] = useState("");
   const [formError, setFormError] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -65,21 +67,32 @@ const Edit = () => {
   if (loading) {
     return <p>Loading</p>;
   }
+
   return (
     <main>
       {post ? (
-        <>
-          <img
-            className={classNames(
-              "max-h-[30vh] mx-auto w-fit",
-              "md:max-w-[400px]"
-            )}
-            src={`${STORAGE_URL}${post.imgSrc}`}
-          />
-          <form className="" onSubmit={handleSubmit}>
-            <div className="px-3 space-y-5">
+        <div
+          className={classNames(
+            "w-full flex bg-black/40 mx-4 flex-col rounded-b-lg",
+            "md:w-[750px] md:mt-10"
+          )}
+        >
+          <h1 className="bg-yellow-400/80 py-2 rounded-t-lg text-center text-neutral-700 font-bold">
+            Edit Post
+          </h1>
+          <div className="md:flex md:flex-row">
+            {/* image */}
+            <img
+              className={classNames(
+                "max-h-[30vh] mx-auto w-fit",
+                "md:max-h-[450px] rounded-bl-lg"
+              )}
+              src={`${STORAGE_URL}${post.imgSrc}`}
+            />
+            {/* form */}
+            <form className="md:w-[500px]" onSubmit={handleSubmit}>
               {/* title */}
-              <div className="w-full">
+              <div className="">
                 <label htmlFor="title">Title</label>
                 <input
                   type="text"
@@ -90,7 +103,7 @@ const Edit = () => {
               </div>
 
               {/* caption */}
-              <div className="w-full">
+              <div className="">
                 <label htmlFor="caption">Caption</label>
                 <textarea
                   type="text"
@@ -99,14 +112,37 @@ const Edit = () => {
                   onChange={(e) => setCaption(e.target.value)}
                 />
               </div>
-            </div>
 
-            <button>Save</button>
-            {/* error message */}
-            {formError && <Error error={formError} />}
-          </form>
-          {/* button */}
-        </>
+              {/* when */}
+              <div className="">
+                <label htmlFor="when">When</label>
+                <input
+                  type="date"
+                  id="when"
+                  value={when}
+                  onChange={(e) => setWhen(e.target.value)}
+                />
+              </div>
+
+              {/* where */}
+              <div className="">
+                <label htmlFor="where">Where</label>
+                <input
+                  type="text"
+                  id="where"
+                  value={where}
+                  onChange={(e) => setWhere(e.target.value)}
+                />
+              </div>
+
+              {/* save */}
+              <button className="save">Save</button>
+
+              {/* error message */}
+              {formError && <Error error={formError} />}
+            </form>
+          </div>
+        </div>
       ) : (
         <></>
       )}

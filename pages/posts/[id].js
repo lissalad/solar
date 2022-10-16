@@ -7,6 +7,7 @@ import classNames from "classnames";
 import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import PenIcon from "../../components/icons/PenIcon";
+import TrashIcon from "../../components/icons/TrashIcon";
 import MapPinIcon from "../../components/icons/MapPinIcon";
 
 import fetchPost from "../../utils/posts/fetchPost";
@@ -22,6 +23,7 @@ const Post = () => {
   const [date, setDate] = useState();
   const [loading, setLoading] = useState(true);
 
+  // fetch post
   useEffect(() => {
     if (id) {
       fetchPost(id).then(({ post, error }) => {
@@ -34,6 +36,23 @@ const Post = () => {
       });
     }
   }, [id, router]);
+
+  // delete post
+  const handleDelete = async () => {
+    const { data, error } = await supabase
+      .from("posts")
+      .delete()
+      .eq("id", post.id);
+
+    if (error) {
+      console.log(error);
+    }
+
+    if (data) {
+      console.log("deleted");
+      router.push("/");
+    }
+  };
 
   // exifr.parse(`${STORAGE_URL}${post.imgSrc}`).then((img) => {
   //   const tempPost = post;
@@ -75,7 +94,13 @@ const Post = () => {
           <div className={classNames("secondary my-2 mx-7", "space-y-6")}>
             {/* caption */}
             <div className={classNames("flex flex-row space-x-2")}>
-              <p>Lissa:</p>
+              <p
+                className={classNames(
+                  "bg-rose-800/60 px-2 py-.5 rounded-lg text-rose-200"
+                )}
+              >
+                user
+              </p>
               <p className="text-left">{post.caption}</p>
             </div>
 
@@ -116,13 +141,22 @@ const Post = () => {
           </div>
         </div>
 
-        {/* edit button */}
-        <a
-          href={"/posts/edit/" + post.id}
-          className="fixed bottom-3 right-3 p-3 bg-black/30 rounded-lg"
+        {/* buttons */}
+        <div
+          className={classNames(
+            "fixed flex flex-row space-x-3 bottom-3 right-3"
+          )}
         >
-          <PenIcon />
-        </a>
+          <a
+            href={"/posts/edit/" + post.id}
+            className="p-3 bg-black/30 rounded-lg"
+          >
+            <PenIcon />
+          </a>
+          <button onClick={handleDelete} className="p-3 bg-black/30 rounded-lg">
+            <TrashIcon />
+          </button>
+        </div>
       </div>
     </main>
   );

@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Error from "../../components/Error";
@@ -62,69 +63,84 @@ export default function New() {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        {/* image upload */}
-        <div className="w-fit">
-          <label htmlFor="image">Upload Image:</label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/png, image/jpeg"
-            onChange={handleImage}
-          />
-        </div>
+      <div
+        className={classNames(
+          "w-full flex bg-black/40 mx-4 flex-col rounded-b-lg",
+          "md:w-[400px] md:mt-10"
+        )}
+      >
+        <h1 className="bg-yellow-400/80 py-2 rounded-t-lg text-center text-neutral-700 font-bold">
+          New Post
+        </h1>
+        <form onSubmit={handleSubmit}>
+          {/* image upload */}
+          <div className="w-fit">
+            <label htmlFor="image">Upload Image:</label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/png, image/jpeg"
+              onChange={handleImage}
+            />
+          </div>
 
-        {/* title */}
-        <div className="field">
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </div>
+          {/* title */}
+          <div className="">
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              id="title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
 
-        {/* when */}
-        <div className="field">
-          <label htmlFor="when">When</label>
-          <input
-            type="date"
-            id="when"
-            value={when}
-            onChange={(e) => setWhen(e.target.value)}
-          />
-        </div>
+          {/* caption */}
+          <div className="">
+            <label htmlFor="caption">Caption</label>
+            <textarea
+              type="text"
+              id="caption"
+              value={caption}
+              onChange={(e) => setCaption(e.target.value)}
+            />
+          </div>
 
-        {/* where */}
-        <div className="field">
-          <label htmlFor="where">Where</label>
-          <input
-            type="text"
-            id="where"
-            value={where}
-            onChange={(e) => setWhere(e.target.value)}
-          />
-        </div>
+          {/* when */}
+          <div className="">
+            <label htmlFor="when">When</label>
+            <input
+              type="date"
+              id="when"
+              value={when}
+              onChange={(e) => setWhen(e.target.value)}
+            />
+          </div>
 
-        {/* caption */}
-        <div className=".field">
-          <label htmlFor="caption">Caption</label>
-          <textarea
-            type="text"
-            id="caption"
-            value={caption}
-            onChange={(e) => setCaption(e.target.value)}
-          />
-        </div>
+          {/* where */}
+          <div className="">
+            <label htmlFor="where">Where</label>
+            <input
+              type="text"
+              id="where"
+              value={where}
+              onChange={(e) => setWhere(e.target.value)}
+            />
+          </div>
 
-        {/* button */}
-        <button>Post</button>
+          {/* buttons */}
+          <div className={classNames("flex flex-row w-full justify-between")}>
+            <button className="cancel" href="/">
+              Cancel
+            </button>
+            <button className="post">Post</button>
+          </div>
 
-        {/* error message */}
-        {formError && <Error error={formError} />}
-      </form>
+          {/* error message */}
+          {formError && <Error error={formError} />}
+        </form>
+      </div>
     </main>
   );
 }
