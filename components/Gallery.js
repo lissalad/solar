@@ -38,7 +38,7 @@ export default function Gallery() {
     <>
       {fetchError && <Error error={fetchError} />}
       {posts && (
-        <div className="flex flex-row justify-center flex-wrap mr-auto gap-2 pt-2">
+        <div className="grid grid-cols-4 w-full gap-2 pt-2">
           {posts
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             .map((post) => (

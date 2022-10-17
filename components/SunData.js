@@ -28,17 +28,21 @@ export default function SunData() {
   return (
     <div
       className={classNames(
-        "w-full h-[300px] flex flex-col justify-center justify-between bg-[url('/sunset.jpg')] bg-cover text-neutral-100 relative"
+        "w-full h-[300px] flex flex-col items-center bg-[url('/sunset.jpg')] bg-cover text-neutral-100 relative"
       )}
     >
+      <div className="flex flex-col space-x-24 text-3xl absolute left-10 top-10 text-neutral-900">
+        <p>your story in</p>
+        <p className="text-8xl font-bold">sunsets.</p>
+      </div>
       {sunset ? (
         <>
           <div
             className={classNames(
-              "flex flex-col items-center my-3 bg-neutral-600/50 w-fit px-4 py-2 space-y-2 absolute bottom-2"
+              "flex flex-col items-center my-3 bg-neutral-800/50 w-fit px-4 py-2 space-y-2 absolute bottom-2 right-0"
             )}
           >
-            <p className="text-left w-full">Today's Sunset</p>
+            <p className="text-left w-full">Today&apos;s Sunset</p>
             <p className="text-6xl">{sunset}</p>
             <p>{date}</p>
           </div>
@@ -50,7 +54,7 @@ export default function SunData() {
         </>
       ) : (
         <button
-          className="flex flex-col items-center my-3 bg-neutral-600/50 w-fit px-4 py-2 space-y-2 absolute bottom-2"
+          className="flex flex-col items-center my-3 bg-neutral-800/50 w-fit px-4 py-2 space-y-2 absolute bottom-2 right-0"
           onClick={handleGrantLocation}
         >
           Get sunset time for my location

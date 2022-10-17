@@ -35,7 +35,7 @@ export default function Account({ session }) {
           "flex flex-row rounded-lg bg-black/70 h-[130px] items-center justify-center px-6 my-6 space-x-5"
         )}
       >
-        <div className="bg-white/80 w-[80px] h-[80px] rounded-lg"></div>
+        <div className="bg-[url('/sample-user.png')] bg-cover w-[80px] h-[80px] rounded-lg"></div>
 
         <div className="flex flex-col items-left space-y-2">
           <p className="text-xl">Lissa</p>

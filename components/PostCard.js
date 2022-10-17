@@ -12,7 +12,7 @@ export default function PostCard({ post, onDelete }) {
     <a href={"/posts/" + post.id} className="">
       <div
         className={classNames(
-          "rounded overflow-hidden",
+          "rounded-sm overflow-hidden",
           "md:group",
           "transition-all hover:brightness-75"
         )}
