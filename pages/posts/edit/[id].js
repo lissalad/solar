@@ -16,7 +16,7 @@ const Edit = () => {
 
   const [title, setTitle] = useState("");
   const [caption, setCaption] = useState("");
-  const [when, setWhen] = useState("");
+  const [when, setWhen] = useState();
   const [where, setWhere] = useState("");
   const [formError, setFormError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -32,7 +32,7 @@ const Edit = () => {
 
     const { data, error } = await supabase
       .from("posts")
-      .update({ title, caption })
+      .update({ title, caption, when, where })
       .eq("id", id)
       .select();
 
