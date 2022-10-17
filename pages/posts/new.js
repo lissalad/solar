@@ -7,7 +7,7 @@ import { supabase } from "../../utils/supabaseClient";
 export default function New() {
   const [selectedFile, setSelectedFile] = useState();
   const [title, setTitle] = useState("");
-  const [when, setWhen] = useState("");
+  const [when, setWhen] = useState();
   const [where, setWhere] = useState("");
 
   const [caption, setCaption] = useState("");
@@ -60,6 +60,10 @@ export default function New() {
   const handleImage = (e) => {
     setSelectedFile(e.target.files[0]);
   };
+
+  function handleCancel() {
+    router.push("/");
+  }
 
   return (
     <main>
@@ -131,7 +135,7 @@ export default function New() {
 
           {/* buttons */}
           <div className={classNames("flex flex-row w-full justify-between")}>
-            <button className="cancel" href="/">
+            <button onClick={handleCancel} className="cancel">
               Cancel
             </button>
             <button className="post">Post</button>

@@ -49,10 +49,8 @@ const Post = () => {
       console.log(error);
     }
 
-    if (data) {
-      console.log("deleted");
-      router.push("/");
-    }
+    console.log("deleted");
+    router.push("/");
   };
 
   // exifr.parse(`${STORAGE_URL}${post.imgSrc}`).then((img) => {

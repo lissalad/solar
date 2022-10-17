@@ -39,9 +39,11 @@ export default function Gallery() {
       {fetchError && <Error error={fetchError} />}
       {posts && (
         <div className="flex flex-row justify-center flex-wrap mr-auto">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} onDelete={handleDelete} />
-          ))}
+          {posts
+            .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+            .map((post) => (
+              <PostCard key={post.id} post={post} onDelete={handleDelete} />
+            ))}
         </div>
       )}
     </>
