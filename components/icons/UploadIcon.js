@@ -8,8 +8,8 @@ export default function UploadIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      width="25"
-      height="25"
+      width="24"
+      height="24"
     >
       <path
         strokeLinecap="round"

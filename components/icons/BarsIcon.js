@@ -6,8 +6,8 @@ export default function BarsIcon() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      width="30"
-      height="30"
+      width="32"
+      height="32"
     >
       <path
         strokeLinecap="round"

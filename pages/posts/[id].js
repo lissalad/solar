@@ -21,7 +21,6 @@ const Post = () => {
   const router = useRouter();
   const { id } = router.query;
   const [post, setPost] = useState();
-  const [date, setDate] = useState();
   const [loading, setLoading] = useState(true);
 
   // fetch post
@@ -53,38 +52,16 @@ const Post = () => {
     router.push("/");
   };
 
+  console.log(post);
+
   // exifr.parse(`${STORAGE_URL}${post.imgSrc}`).then((img) => {
   //   const tempPost = post;
   //   tempPost.latitude = img["GPSTimeStamp"];
   //   setPost(tempPost);
   // });
 
-  function getDate() {
-    if (date) {
-      return (
-        <div className="flex flex-row space-x-2 items-center">
-          <CalendarIcon />
-          <p>
-            {new Date(post.when).toLocaleString("en", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </p>
-        </div>
-      );
-    }
-  }
-
-  function getLocation() {
-    <div className="flex flex-row space-x-1 items-center">
-      <MapPinIcon />
-      <p>{post.where}</p>
-    </div>;
-  }
-
   if (loading) {
-    return <p>Loading</p>;
+    return <p>loading</p>;
   }
 
   return (
@@ -116,12 +93,32 @@ const Post = () => {
                     "bg-rose-800/50 px-2 py-.5 rounded-lg text-rose-200 h-fit w-fit font-bold"
                   )}
                 >
-                  user
+                  lissa
                 </p>
                 <p className="text-left w-full text-neutral-400">
                   {post.caption}
                 </p>
               </div>
+
+              {post.when && (
+                <div className="flex flex-row space-x-2 items-center">
+                  <CalendarIcon />
+                  <p>
+                    {new Date(post.when).toLocaleString("en", {
+                      month: "long",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </p>
+                </div>
+              )}
+
+              {post.where && (
+                <div className="flex flex-row space-x-1 items-center">
+                  <MapPinIcon />
+                  <p>{post.where}</p>
+                </div>
+              )}
             </div>
             {/* buttons */}
             <div className="absolute right-3 bottom-3">

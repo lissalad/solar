@@ -12,18 +12,16 @@ export default function PostCard({ post, onDelete }) {
     <a href={"/posts/" + post.id} className="">
       <div
         className={classNames(
-          "transition-all m-1",
+          "rounded overflow-hidden",
           "md:group",
-          "hover:brightness-75"
+          "transition-all hover:brightness-75"
         )}
       >
         <img
           className="w-80 h-80 object-cover"
           src={`${STORAGE_URL}${post.imgSrc}`}
-          // layout="fill"
-          // objectFit="cover"
           alt=""
-        ></img>
+        />
       </div>
     </a>
   );

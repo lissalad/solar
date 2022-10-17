@@ -81,12 +81,13 @@ const Edit = () => {
             Edit Post
           </h1>
           <div className="md:flex md:flex-row">
-            {/* image */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className={classNames(
                 "max-h-[30vh] mx-auto w-fit",
                 "md:max-h-[450px] rounded-bl-lg"
               )}
+              alt=""
               src={`${STORAGE_URL}${post.imgSrc}`}
             />
             {/* form */}
@@ -136,7 +137,9 @@ const Edit = () => {
               </div>
 
               {/* save */}
-              <button className="save">Save</button>
+              <div className="flex justify-end">
+                <button className="save">Save</button>
+              </div>
 
               {/* error message */}
               {formError && <Error error={formError} />}

@@ -32,7 +32,7 @@ export default function Account({ session }) {
     <main className="">
       <div
         className={classNames(
-          "flex flex-row w-[400px] rounded-lg bg-black/70 h-[130px] items-center justify-center my-6 space-x-5"
+          "flex flex-row rounded-lg bg-black/70 h-[130px] items-center justify-center px-6 my-6 space-x-5"
         )}
       >
         <div className="bg-white/80 w-[80px] h-[80px] rounded-lg"></div>
