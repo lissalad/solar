@@ -11,7 +11,6 @@ const options = {
 };
 
 export default function SunData() {
-  const [city, setCity] = useState("San Francisco");
   const [sunset, setSunset] = useState();
   const [date, setDate] = useState(getDate());
   const [time, setTime] = useState(getTime());
@@ -29,26 +28,34 @@ export default function SunData() {
   return (
     <div
       className={classNames(
-        "w-full my-3 h-[300px] flex flex-col items-center justify-center bg-[url('/sunset-sky.jpg')] bg-bottom text-neutral-900"
+        "w-full h-[300px] flex flex-col justify-center justify-between bg-[url('/sunset.jpg')] bg-cover text-neutral-100 relative"
       )}
     >
-      <div className={classNames("flex flex-col items-center my-3")}>
-        <p>Sunset for {date}</p>
-        <p className="text-6xl">{sunset}</p>
-      </div>
-      <div
-        className={classNames(
-          "flex flex-col items-center text-center w-full justify-center space-y-2"
-        )}
-      >
-        {/* <p className="text-lg">San Francisco, California</p> */}
-      </div>
-      <button
-        className="bg-stone-700/80 text-sm text-stone-200 px-4 py-1 rounded"
-        onClick={handleGrantLocation}
-      >
-        grant location
-      </button>
+      {sunset ? (
+        <>
+          <div
+            className={classNames(
+              "flex flex-col items-center my-3 bg-neutral-600/50 w-fit px-4 py-2 space-y-2 absolute bottom-2"
+            )}
+          >
+            <p className="text-left w-full">Today's Sunset</p>
+            <p className="text-6xl">{sunset}</p>
+            <p>{date}</p>
+          </div>
+          <div
+            className={classNames(
+              "flex flex-col items-center text-center w-full justify-center space-y-2"
+            )}
+          ></div>
+        </>
+      ) : (
+        <button
+          className="flex flex-col items-center my-3 bg-neutral-600/50 w-fit px-4 py-2 space-y-2 absolute bottom-2"
+          onClick={handleGrantLocation}
+        >
+          Get sunset time for my location
+        </button>
+      )}
     </div>
   );
 }
