@@ -90,7 +90,7 @@ const Edit = () => {
               src={`${STORAGE_URL}${post.imgSrc}`}
             />
             {/* form */}
-            <form className="md:w-[500px]" onSubmit={handleSubmit}>
+            <form className="post-form md:w-[500px]" onSubmit={handleSubmit}>
               {/* title */}
               <div className="">
                 <label htmlFor="title">Title</label>

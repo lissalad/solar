@@ -1,20 +1,17 @@
 import Header from "../components/Header";
-// import { AuthProvider } from "../utils/auth";
 import { supabase } from "../utils/supabaseClient";
 import "../styles/globals.css";
+import { Auth, ThemeSupa } from "@supabase/auth-ui-react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }) {
-  // const [session, setSession] = useState(null);
-  // const [user, setUser] = useState(null);
-
-  // supabase.auth.getSession().then(({ data: { session }, error }) => {
-  //   setSession(session);
-  // });
-
   return (
+    // <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }}>
     <>
       <Header />
       <Component {...pageProps} />
+      {/* </Auth> */}
     </>
   );
 }
